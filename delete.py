@@ -1,0 +1,17 @@
+import sqlite3
+import os
+name=input("Enter the record to delete")
+dir=os.path.join(os.getcwd(),"database")
+conn_dir=os.path.join(dir,'attendance_database.sqlite')
+print(conn_dir)
+conn=sqlite3.connect(conn_dir)
+cur=conn.cursor()
+cur.execute("DELETE FROM record where name='{}'".format(name))
+print("{} row deleted".format(cur.rowcount))
+cur.execute("SELECT * FROM record")
+data=cur.fetchall()
+print(data)
+cur.connection.commit()
+conn.commit()
+cur.close()
+conn.close()
