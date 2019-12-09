@@ -74,7 +74,7 @@ while(c<=60):
         c+=1
     ret, frame = cap.read()
     gray=cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
-    faces = face_cascade.detectMultiScale(gray,scaleFactor=1.5,minNeighbors=5)
+    faces = face_cascade.detectMultiScale(gray,scaleFactor=1.5,minNeighbors=1)
     for (x,y,w,h) in faces:
         roi_gray=gray[y-10:y+h+20,x-10:x+w+20]
         path = name_dir
